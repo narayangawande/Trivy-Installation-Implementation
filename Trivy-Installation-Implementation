@@ -24,3 +24,18 @@ trivy image -f json -o results.json image_name
 trivy repo repo-url
 
 trivy k8s --report summary cluster
+
+
+------Groovy Script----------
+
+stage('Trivy Fs scan'){
+			steps{
+				sh "trivy fs --fromat table -o fs-report.html ."
+			
+			}
+
+
+stage('Trivy Image Scan'){
+			steps{
+				sh "Trivy image --format table -o fs-report.html dockerImg_Name/DockerRegidtry_name:latest"		
+			}
